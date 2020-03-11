@@ -13,8 +13,11 @@ public class MainApp {
         System.out.println(result);*/
        User user = new User();
        user.setName("jayavant");
+       Demo demo = new Demo();
+       demo.setName("jaya");
+       demo.setSurname("raut");
 
-       session.save(user);
+       session.save(demo);
 
 
         session.getTransaction().commit();
