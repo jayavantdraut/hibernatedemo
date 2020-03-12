@@ -1,4 +1,8 @@
 import org.hibernate.Session;
+import org.hibernate.query.Query;
+
+import java.util.List;
+
 
 public class MainApp {
 
@@ -11,17 +15,14 @@ public class MainApp {
 
         String result = (String) session.createNativeQuery(sql).getSingleResult();
         System.out.println(result);*/
-       User user = new User();
-       user.setName("jayavant");
+      /* User user = new User();
+       user.setName("yashwant");*/
        Demo demo = new Demo();
-       demo.setName("jaya");
-       demo.setSurname("raut");
+     //  query using place holder  // session.createQuery("from Demo where name = ?",Demo.class).setParameter(0,"jaya") .stream()
+       session.createQuery("from Demo where name =:name",Demo.class).setParameter("name","jaya").stream() // named  parameter query
+               .forEach(de-> System.out.println(de.getName()));
 
-       session.save(demo);
-
-
-        session.getTransaction().commit();
-        session.close();
+       session.close();
 
 
         HibernateUtil.shutdown();
