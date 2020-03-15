@@ -10,20 +10,25 @@ public class MainApp {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-       /* // Check database version
-        String sql = "select version()";
 
-        String result = (String) session.createNativeQuery(sql).getSingleResult();
-        System.out.println(result);*/
-      /* User user = new User();
-       user.setName("yashwant");*/
-       Demo demo = new Demo();
-     //  query using place holder  // session.createQuery("from Demo where name = ?",Demo.class).setParameter(0,"jaya") .stream()
-       session.createQuery("from Demo where name =:name",Demo.class).setParameter("name","jaya").stream() // named  parameter query
-               .forEach(de-> System.out.println(de.getName()));
+  //  what is difference between loda  and get method in hibernate
 
-       session.close();
+        /*  load and get method are used smae purpose for retreviwenig the object
 
+            bute when the object is not present in data base than loda method will throw the exceptions
+
+            ObjectNotFoundException: No row with the given identifier exists
+
+            where the get method will return   null
+
+          Demo d1 =(Demo)  session.get(Demo.class,"jay");
+         System.out.println(d1);
+
+
+         Demo d =(Demo)  session.load(Demo.class,"jay");
+         System.out.println(d);
+
+         */
 
         HibernateUtil.shutdown();
     }
