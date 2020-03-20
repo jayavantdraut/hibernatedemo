@@ -1,7 +1,7 @@
-import org.hibernate.Session;
-import org.hibernate.query.Query;
+package hibernate.demo;
 
-import java.util.List;
+import hibernate.util.HibernateUtil;
+import org.hibernate.Session;
 
 
 public class MainApp {

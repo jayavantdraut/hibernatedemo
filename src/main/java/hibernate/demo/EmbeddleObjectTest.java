@@ -1,3 +1,6 @@
+package hibernate.demo;
+
+import hibernate.util.HibernateUtil;
 import org.hibernate.Session;
 
 public class EmbeddleObjectTest {
@@ -50,8 +53,8 @@ public class EmbeddleObjectTest {
         address1.setHouse("green complex");
         address1.setStreet(" green  colleage rod");
         EmbeddedUsers jaya = new EmbeddedUsers();
-        jaya.setOffice(address1);
-        jaya.setAddress(address);
+       // jaya.setOffice(address1);
+        //jaya.setAddress(address);
         jaya.setEmail("jaya@gmail.com");
         jaya.setName("jayavant");
         jaya.setSurName("raut");

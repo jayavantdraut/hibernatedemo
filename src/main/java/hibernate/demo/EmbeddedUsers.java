@@ -1,4 +1,8 @@
+package hibernate.demo;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user_details")
@@ -11,7 +15,13 @@ public class EmbeddedUsers {
     private String surName;
     private String email;
 
-    @Embedded
+    @ElementCollection(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_address" ,joinColumns = @JoinColumn(name = "user_id"))
+    private Set <Address> addresses = new HashSet<>();
+
+
+
+   /* @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "city", column = @Column(name = "HOME_CITYNAME")),
             @AttributeOverride(name = "house", column = @Column(name = "HOUSE")),
@@ -23,7 +33,16 @@ public class EmbeddedUsers {
             @AttributeOverride(name = "city", column = @Column(name = "OFFICE_CITYNAME")),
             @AttributeOverride(name = "house", column = @Column(name = "OFFICE_NUMBER")),
             @AttributeOverride(name = "street", column = @Column(name = "OFFICE_ROAD"))})
-    private  Address office;
+    private  Address office;*/
+
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
+    }
+
     public Integer getId() {
 
         return id;
@@ -64,7 +83,7 @@ public class EmbeddedUsers {
         this.email = email;
     }
 
-    public Address getAddress() {
+   /* public Address getAddress() {
 
         return address;
     }
@@ -79,5 +98,5 @@ public class EmbeddedUsers {
 
     public void setOffice(Address office) {
         this.office = office;
-    }
+    }*/
 }

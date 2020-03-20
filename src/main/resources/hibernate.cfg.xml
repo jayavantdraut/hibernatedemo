@@ -9,14 +9,16 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="connection.autocommit">true</property>
         <property name="show_sql">true</property>
      <!--   <property name="hibernate.connection.password">mysql</property>-->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL55Dialect</property>
 
         <property name="hibernate.connection.password">Livefeedback1234#</property>
-        <mapping class="User"/>
-        <mapping class="EmbeddedUsers"></mapping>
-        <mapping class="Address"></mapping>
+        <mapping class="hibernate.demo.User"/>
+        <mapping class="hibernate.demo.EmbeddedUsers"></mapping>
+        <mapping class="hibernate.demo.Address"></mapping>
+        <mapping class="hibernate.method.Empolyee"></mapping>
 
     </session-factory>
 </hibernate-configuration>

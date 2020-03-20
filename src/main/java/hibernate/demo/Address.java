@@ -1,4 +1,5 @@
-import javax.persistence.Column;
+package hibernate.demo;
+
 import javax.persistence.Embeddable;
 
 @Embeddable

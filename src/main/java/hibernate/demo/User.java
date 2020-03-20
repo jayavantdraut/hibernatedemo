@@ -1,4 +1,4 @@
-import org.hibernate.annotations.GenericGenerator;
+package hibernate.demo;
 
 import javax.persistence.*;
 

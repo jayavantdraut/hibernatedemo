@@ -1,3 +1,7 @@
+package hibernate.method;
+
+import hibernate.demo.User;
+import hibernate.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -30,26 +34,33 @@ public class UpdateVsMerge {
          */
 
        SessionFactory factory= HibernateUtil.getSessionFactory();
-        User jaya =null;
-        Session  session = factory.openSession();
-        session.getTransaction().begin();
 
-      jaya = session.get(User.class,5);
-     session.getTransaction().commit();
-     session.close();
+       Session session =factory.openSession();
+       session.beginTransaction();
 
-        System.out.println("jaya is    "+ jaya);
-     jaya.setName("yashw123rt");
+       Empolyee empolyee = new Empolyee();
 
-     Session session1 = factory.openSession();
+        empolyee = session.get(Empolyee.class,10);
 
-     session1.getTransaction().begin();
+        Empolyee em = new Empolyee();
+        em.setEmpid(10);
+        em.setName(" ravi");
+// this method throw an exceptions   A different object with the same identifier value was already associated with the session
+        //becaus for new empolyee object id is also 10 . in single session  two object with same identifier not allowed
 
-   //  session1.get(User.class,5);
+    //  session.update(em);
 
-     session1.update(jaya);
+      // for merge method its copy the one object data to another object and merge the changes and update the object
+       session.merge(em);
 
-     session1.getTransaction().commit();
+       session.getTransaction().commit();
+
+
+
+
+
+
+
 
 
 
